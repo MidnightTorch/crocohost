@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CROCOHOST</title>
+</head>
+<body>
+<img src="{{ image }}" alt="Image not found" align="left">
+
+{% if descriprion == 'Изображение еще не описано' %}
+<p>{{ descriprion }}</p>
+
+{% else %}
+<div>
+    <p>Год - {{ year }}</p>
+    <p>Публикация - {{ publication }}</p>
+    <p>Изображение - {{ name }}</p>
+    <p>Тип - {{ type }}</p>
+    <p>Тема публикации - {{ topic }}</p>
+    {% if countries == '' %}
+    <p>Упомянутые страны отсутсвуют</p>
+    {% else %}
+    <p>Упомянутые страны - {{ countries }}</p>
+    {% endif %}
+
+    {% if personalities == '' %}
+    <p>Упомянутые личности отсутсвуют</p>
+    {% else %}
+    <p>Упомянутые личности - {{ personalities }}</p>
+    {% endif %}
+
+    {% for key, value in descriprion.items() %}
+        {% if descriprion[key] == True %}
+        <li><input type="checkbox" name="bool_category_displayer" disabled="disabled" checked > {{ key }}</li>
+        {% else %}
+        <li><input type="checkbox" name="bool_category_displayer" disabled="disabled"> {{ key }}</li>
+        {% endif %}
+    {% endfor %}
+</div>
+{% endif %}
+
+<form method="get">
+<button type="submit" name="control_button" value="Previous">Предыдущее изображение</button>
+<button type="submit" name="control_button" value="Next">Следующее изображение</button>
+</form>
+</body>
+</html>
