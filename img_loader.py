@@ -17,8 +17,7 @@ def connect_to_db(func):
                 cursorclass=pymysql.cursors.DictCursor) as conn:
             with conn.cursor() as cursor:
                 sql = func(*args, **kwargs)
-                cursor.execute(sql, args[1::
-                ])
+                cursor.execute(sql, args[1::])
                 conn.commit()
                 return cursor.fetchall()
 
